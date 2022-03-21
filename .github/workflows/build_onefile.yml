@@ -1,0 +1,38 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    name: Build onefile for win
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+
+      - name: Install deps
+        run: |
+          pip install wheel pyinstaller -U
+          wget https://nightly.link/AnotherFoxGuy/ogre/workflows/pip-build/pip/wheel-win.zip
+          7z x wheel-win.zip
+          pip install ogre_python-13.3.0-cp310-cp310-win_amd64.whl
+
+      - name: Build
+        run: pyinstaller --onefile ogre_mesh_viewer.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: onefile
+          path: dist/*
+          if-no-files-found: error
