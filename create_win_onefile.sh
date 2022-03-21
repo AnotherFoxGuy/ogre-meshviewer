@@ -3,7 +3,7 @@
 # This should work on Windows (MinGW) and Linux
 # for MinGW use e.g. https://gitforwindows.org/
 
-curl -L https://dl.cloudsmith.io/public/ogrecave/ogre/raw/files/ogre-sdk-v13.3.0-msvc141-x64.zip -o ogre-sdk.zip
+curl -L https://dl.cloudsmith.io/public/ogrecave/ogre/raw/files/ogre-sdk-v13.3.2-msvc141-x64.zip -o ogre-sdk.zip
 unzip ogre-sdk.zip
 
 curl -L https://nightly.link/AnotherFoxGuy/ogre/workflows/pip-build/pip/wheel-win.zip -o wheel-win.zip
